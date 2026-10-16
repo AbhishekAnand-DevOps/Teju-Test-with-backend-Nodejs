@@ -2,11 +2,11 @@
   "name": "website-desge-teju-v2",
   "version": "1.0.0",
   "description": "",
-  "main": "backend/server.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node backend/server.js",
-    "dev": "node --watch backend/server.js",
-    "seed": "node backend/src/config/database.js"
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "seed": "node src/config/database.js"
   },
   "keywords": [],
   "author": "",
