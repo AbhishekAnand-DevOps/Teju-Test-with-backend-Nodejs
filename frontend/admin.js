@@ -135,9 +135,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // --------------------------------------------------------------------------
   // API HELPER & ORIGIN RESOLVER
   // --------------------------------------------------------------------------
-  const API_BASE = (window.location.protocol === 'http:' || window.location.protocol === 'https:') && window.location.port === '5000'
-    ? ''
-    : 'https://teju-test-with-backend-nodejs.onrender.com';
+  const API_BASE = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+    ? (window.location.port === '5000' ? '' : 'http://localhost:5000')
+    : (window.location.hostname.includes('onrender.com') ? '' : 'https://teju-test-with-backend-nodejs.onrender.com');
 
   function resolveMediaUrl(url) {
     if (!url) return '';

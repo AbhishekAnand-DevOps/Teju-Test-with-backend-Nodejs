@@ -79,13 +79,18 @@ app.get('/index%20%20edited%20abhi%201.html', (req, res) => {
 app.get('/api/health', (req, res) => {
   try {
     const dbTest = db.prepare('SELECT 1 as alive').get();
+    let appVersion = '1.0.0';
+    try {
+      appVersion = require(path.join(projectRoot, 'package.json')).version || require(path.join(__dirname, 'package.json')).version;
+    } catch (_) {}
+
     res.status(200).json({
       status: 'healthy',
       database: dbTest && dbTest.alive === 1 ? 'connected' : 'degraded',
       uptime: Math.floor(process.uptime()),
       timestamp: new Date().toISOString(),
       environment: config.nodeEnv,
-      version: require(path.join(projectRoot, 'package.json')).version
+      version: appVersion
     });
   } catch (err) {
     res.status(503).json({
