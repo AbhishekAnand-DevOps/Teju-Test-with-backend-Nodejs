@@ -82,7 +82,7 @@ app.get('/api/health', (req, res) => {
     let appVersion = '1.0.0';
     try {
       appVersion = require(path.join(projectRoot, 'package.json')).version || require(path.join(__dirname, 'package.json')).version;
-    } catch (_) {}
+    } catch (_) { }
 
     res.status(200).json({
       status: 'healthy',
