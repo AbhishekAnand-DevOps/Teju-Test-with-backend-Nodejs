@@ -115,11 +115,11 @@ const server = app.listen(config.port, () => {
 ===========================================================
   🚀 TEJASHWINI PORTFOLIO BACKEND IS ONLINE
 ===========================================================
-  * Server running at:     https://teju-test-with-backend-nodejs.onrender.com:${config.port}
-  * Public Portfolio:      https://teju-test-with-backend-nodejs.onrender.com:${config.port}/
-  * Admin Portal:          https://teju-test-with-backend-nodejs.onrender.com:${config.port}/admin
-  * Health Endpoint:       https://teju-test-with-backend-nodejs.onrender.com:${config.port}/api/health
-  * Inquiries API:         https://teju-test-with-backend-nodejs.onrender.com:${config.port}/api/inquiries
+  * Server running at:     https://teju-test-with-backend-nodejs-front.vercel.app/:${config.port}
+  * Public Portfolio:      https://teju-test-with-backend-nodejs-front.vercel.app/${config.port}/
+  * Admin Portal:          https://teju-test-with-backend-nodejs.onrender.com${config.port}/admin
+  * Health Endpoint:       https://teju-test-with-backend-nodejs-front.vercel.app/${config.port}/api/health
+  * Inquiries API:         https://teju-test-with-backend-nodejs-front.vercel.app/${config.port}/api/inquiries
   * Database Status:       SQLite Connected (WAL Mode)
   * Environment:           ${config.nodeEnv}
 ===========================================================
