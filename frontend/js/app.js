@@ -346,7 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Dynamic backend origin resolver (works with Node :5000, Live Server :5500, or file://)
   const API_BASE = (window.location.protocol === 'http:' || window.location.protocol === 'https:') && window.location.port === '5000'
     ? ''
-    : 'http://localhost:5000';
+    : 'https://teju-test-with-backend-nodejs.onrender.com';
 
   // Asynchronously synchronize portfolio projects with backend API
   async function syncProjectsFromBackend() {
