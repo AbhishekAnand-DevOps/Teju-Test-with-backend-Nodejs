@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — Tejashwini Studio Control</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./admin.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,5 95,25 95,75 50,95 5,75 5,25' fill='%238b5cf6'/></svg>">
+</head>
+<body>
+
+  <!-- Ambient Glow Background -->
+  <div class="ambient-glow" aria-hidden="true">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="admin-toast-container" class="toast-container"></div>
+
+  <!-- =========================================================================
+       1. AUTHENTICATION / LOGIN SCREEN
+       ========================================================================= -->
+  <div id="auth-screen" class="auth-screen">
+    <div class="auth-card">
+      <div class="auth-brand">
+        <div class="auth-logo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <h1>TEJASHWINI</h1>
+        <p class="auth-subtitle">Creative Studio Backend Portal</p>
+      </div>
+
+      <form id="login-form" class="auth-form">
+        <div class="form-group">
+          <label for="login-email">Admin Email</label>
+          <input type="email" id="login-email" class="input-field" placeholder="admin@tejashwini.art" required autofocus>
+        </div>
+
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="login-password" class="input-field" placeholder="••••••••••••" required>
+            <button type="button" id="toggle-pwd-btn" class="pwd-toggle-btn" aria-label="Show password">👁</button>
+          </div>
+        </div>
+
+        <div id="login-error-msg" class="error-banner" style="display: none;"></div>
+
+        <button type="submit" id="login-submit-btn" class="btn btn-primary btn-block">
+          <span>Authenticate Session</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+
+        <div class="auth-demo-hint">
+          <p>Default credentials: <code>admin@tejashwini.art</code> / <code>Admin@2025!</code></p>
+          <button type="button" id="demo-fill-btn" class="btn-text">⚡ Auto-fill credentials</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       2. MAIN ADMIN DASHBOARD
+       ========================================================================= -->
+  <div id="dashboard-screen" class="dashboard-screen" style="display: none;">
+    
+    <!-- Top Navigation Bar -->
+    <header class="admin-header">
+      <div class="header-left">
+        <div class="header-brand">
+          <div class="logo-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="url(#logo-grad)" stroke-width="2">
+              <defs>
+                <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#8b5cf6" />
+                  <stop offset="100%" stop-color="#00f2fe" />
+                </linearGradient>
+              </defs>
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+              <line x1="12" y1="22.08" x2="12" y2="12"></line>
+            </svg>
+          </div>
+          <div>
+            <div class="brand-name">TEJASHWINI <span class="badge-tag">STUDIO OS</span></div>
+            <div class="sys-status"><span class="status-dot"></span> Backend Online (Node.js + SQLite)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div class="live-clock" id="header-clock">--:--:-- IST</div>
+
+        <a href="/" target="_blank" class="btn btn-secondary btn-sm" title="Open live public portfolio">
+          <span>View Site</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        </a>
+
+        <!-- Admin Profile Pill -->
+        <div class="user-profile-menu">
+          <button id="user-menu-btn" class="user-pill-btn">
+            <div class="user-avatar" id="header-user-avatar">T</div>
+            <span id="header-user-name">Tejashwini</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          
+          <div id="user-dropdown" class="user-dropdown-menu">
+            <div class="dropdown-header">
+              <strong id="dropdown-user-name">Tejashwini</strong>
+              <small id="dropdown-user-email">admin@tejashwini.art</small>
+            </div>
+            <button id="btn-open-pwd-modal" class="dropdown-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <span>Change Password</span>
+            </button>
+            <div class="dropdown-divider"></div>
+            <button id="btn-logout" class="dropdown-item item-danger">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+              <span>Sign Out</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="dashboard-main">
+
+      <!-- KPI Stat Metric Ribbon -->
+      <section class="kpi-grid">
+        <div class="kpi-card card-glow-purple">
+          <div class="kpi-icon">📥</div>
+          <div class="kpi-info">
+            <span class="kpi-label">Total Inquiries</span>
+            <h3 class="kpi-val" id="stat-total-inquiries">0</h3>
+            <span class="kpi-sub" id="stat-new-badge">0 New</span>
+          </div>
+        </div>
+
+        <div class="kpi-card card-glow-cyan">
+          <div class="kpi-icon">⚡</div>
+          <div class="kpi-info">
+            <span class="kpi-label">Active Pipeline Deals</span>
+            <h3 class="kpi-val" id="stat-active-inquiries">0</h3>
+            <span class="kpi-sub">In Discussion / Proposal</span>
+          </div>
+        </div>
+
+        <div class="kpi-card card-glow-pink">
+          <div class="kpi-icon">💰</div>
+          <div class="kpi-info">
+            <span class="kpi-label">Estimated Pipeline Value</span>
+            <h3 class="kpi-val" id="stat-pipeline-value">₹0</h3>
+            <span class="kpi-sub">Total active brief budgets</span>
+          </div>
+        </div>
+
+        <div class="kpi-card card-glow-green">
+          <div class="kpi-icon">🎨</div>
+          <div class="kpi-info">
+            <span class="kpi-label">Portfolio Projects</span>
+            <h3 class="kpi-val" id="stat-total-projects">6</h3>
+            <span class="kpi-sub">Published to showcase</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Navigation Tabs -->
+      <div class="tab-bar">
+        <button class="tab-btn active" data-tab="tab-inquiries">
+          <span>Briefs & Inquiries CRM</span>
+          <span class="tab-counter" id="tab-inquiry-count">0</span>
+        </button>
+        <button class="tab-btn" data-tab="tab-projects">
+          <span>Portfolio Projects CMS</span>
+        </button>
+        <button class="tab-btn" data-tab="tab-system">
+          <span>Diagnostics & Health</span>
+        </button>
+      </div>
+
+      <!-- =====================================================================
+           TAB 1: INQUIRIES CRM
+           ===================================================================== -->
+      <section id="tab-inquiries" class="tab-content active">
+        
+        <!-- Controls & Filters Bar -->
+        <div class="content-toolbar">
+          <div class="search-box">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="inquiry-search" placeholder="Search by client, email, brief keyword...">
+          </div>
+
+          <div class="filter-controls">
+            <select id="filter-status" class="select-field">
+              <option value="all">All Statuses</option>
+              <option value="new">🟢 New</option>
+              <option value="in_discussion">🟡 In Discussion</option>
+              <option value="proposal_sent">🟣 Proposal Sent</option>
+              <option value="accepted">🔵 Accepted / Won</option>
+              <option value="completed">✅ Completed</option>
+              <option value="archived">⚪ Archived</option>
+            </select>
+
+            <select id="filter-type" class="select-field">
+              <option value="all">All Categories</option>
+              <option value="3D CGI Commercial">3D CGI Commercial</option>
+              <option value="Motion Graphics">Motion Graphics</option>
+              <option value="Video Editing & Color">Video Editing</option>
+              <option value="Music Video VFX">Music Video VFX</option>
+              <option value="3D Product Render">3D Product Stills</option>
+            </select>
+
+            <button id="btn-export-csv" class="btn btn-secondary" title="Export inquiries as RFC 4180 CSV">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Export CSV</span>
+            </button>
+
+            <button id="btn-refresh-inquiries" class="btn btn-secondary btn-icon" title="Refresh">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Inquiries Table -->
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Status</th>
+                <th>Client</th>
+                <th>Category</th>
+                <th>Est. Budget</th>
+                <th>Turnaround</th>
+                <th>Submitted</th>
+                <th style="text-align: right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="inquiries-table-body">
+              <tr>
+                <td colspan="7" class="loading-state">Loading inquiries from database...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Pagination Controls -->
+        <div class="pagination-bar" id="inquiries-pagination" style="display: none;">
+          <span class="pagination-info" id="pagination-info">Showing 1-10 of 20</span>
+          <div class="pagination-btns">
+            <button id="btn-prev-page" class="btn btn-sm btn-secondary" disabled>← Previous</button>
+            <button id="btn-next-page" class="btn btn-sm btn-secondary" disabled>Next →</button>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- =====================================================================
+           TAB 2: PORTFOLIO PROJECTS CMS
+           ===================================================================== -->
+      <section id="tab-projects" class="tab-content">
+        <div class="content-toolbar">
+          <div>
+            <h2 style="font-size: 1.25rem; font-family: var(--font-display);">Portfolio Projects</h2>
+            <p style="color: var(--text-dim); font-size: 0.85rem;">Manage the 3D & motion projects displayed on your public portfolio.</p>
+          </div>
+          <button id="btn-add-project" class="btn btn-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>Add New Project</span>
+          </button>
+        </div>
+
+        <div class="projects-admin-grid" id="projects-admin-grid">
+          <div class="loading-state">Loading portfolio projects...</div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           TAB 3: DIAGNOSTICS & SYSTEM HEALTH
+           ===================================================================== -->
+      <section id="tab-system" class="tab-content">
+        <div class="system-grid">
+          <div class="sys-card">
+            <h3>Server Diagnostics</h3>
+            <div class="sys-info-row"><span>Node.js Engine:</span> <code id="sys-node-version">--</code></div>
+            <div class="sys-info-row"><span>Operating System:</span> <code id="sys-platform">--</code></div>
+            <div class="sys-info-row"><span>Server Uptime:</span> <code id="sys-uptime">--</code></div>
+            <div class="sys-info-row"><span>Database Engine:</span> <code>Native SQLite (node:sqlite)</code></div>
+            <div class="sys-info-row"><span>Process Memory (RSS):</span> <code id="sys-memory">--</code></div>
+            <div class="sys-info-row"><span>API Health:</span> <span class="badge badge-success">Online & Healthy</span></div>
+          </div>
+
+          <div class="sys-card">
+            <h3>Email Dispatcher Config</h3>
+            <div class="sys-info-row"><span>Primary Notification Inbox:</span> <code id="sys-email-receiver">tejashwini.vfx@gmail.com</code></div>
+            <div class="sys-info-row"><span>Transport Mode:</span> <code id="sys-email-mode">Console Preview / SMTP Ready</code></div>
+            <div class="sys-info-row"><span>Automated Alerting:</span> <code>Enabled on new briefs</code></div>
+            <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 1rem;">
+              💡 To enable live SMTP relay via Gmail or SendGrid, update <code>SMTP_HOST</code>, <code>SMTP_USER</code>, and <code>SMTP_PASS</code> in your <code>.env</code> file.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- =========================================================================
+       MODAL 1: VIEW & MANAGE INQUIRY BRIEF
+       ========================================================================= -->
+  <div id="inquiry-detail-modal" class="modal-backdrop">
+    <div class="modal-card modal-lg">
+      <div class="modal-header">
+        <div>
+          <span class="badge" id="modal-inquiry-status-badge">New</span>
+          <h3 id="modal-inquiry-client" style="margin-top: 0.5rem; font-family: var(--font-display);">Client Brief</h3>
+        </div>
+        <button class="modal-close" id="btn-close-inquiry-modal">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="inquiry-meta-grid">
+          <div><label>Email Address</label><p id="modal-inquiry-email">--</p></div>
+          <div><label>Project Category</label><p id="modal-inquiry-type">--</p></div>
+          <div><label>Budget Scope</label><p id="modal-inquiry-budget" style="color: #10b981; font-weight: 700;">--</p></div>
+          <div><label>Target Timeline</label><p id="modal-inquiry-timeline">--</p></div>
+          <div><label>Submitted On</label><p id="modal-inquiry-date">--</p></div>
+          <div><label>IP Address</label><p id="modal-inquiry-ip">--</p></div>
+        </div>
+
+        <div class="brief-box">
+          <label>Full Project Brief & Deliverables Scope:</label>
+          <div class="brief-content" id="modal-inquiry-brief"></div>
+        </div>
+
+        <div class="form-group" style="margin-top: 1.5rem;">
+          <label for="modal-inquiry-status-select">Update Workflow Status</label>
+          <select id="modal-inquiry-status-select" class="select-field" style="width: 100%;">
+            <option value="new">🟢 New Brief</option>
+            <option value="in_discussion">🟡 In Discussion / Scope Align</option>
+            <option value="proposal_sent">🟣 Proposal & Estimate Sent</option>
+            <option value="accepted">🔵 Accepted / Won Contract</option>
+            <option value="completed">✅ Project Completed</option>
+            <option value="archived">⚪ Archived</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="modal-inquiry-notes">Internal Admin Notes</label>
+          <textarea id="modal-inquiry-notes" class="textarea-field" rows="3" placeholder="Add confidential notes, meeting dates, pricing revisions..."></textarea>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button id="btn-delete-inquiry" class="btn btn-danger-outline">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+          <span>Delete Inquiry</span>
+        </button>
+
+        <div style="display: flex; gap: 0.75rem;">
+          <a id="btn-email-client" href="#" class="btn btn-secondary" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>Email Client</span>
+          </a>
+          <button id="btn-save-inquiry" class="btn btn-primary">Save Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 2: ADD / EDIT PROJECT
+       ========================================================================= -->
+  <div id="project-modal" class="modal-backdrop">
+    <div class="modal-card modal-lg">
+      <div class="modal-header">
+        <h3 id="project-modal-title" style="font-family: var(--font-display);">Add Portfolio Project</h3>
+        <button class="modal-close" id="btn-close-project-modal">✕</button>
+      </div>
+
+      <form id="project-form" class="modal-body">
+        <input type="hidden" id="project-form-id">
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="p-title">Project Title *</label>
+            <input type="text" id="p-title" class="input-field" placeholder="e.g. Mustang SRT 3D Commercial" required>
+          </div>
+          <div class="form-group">
+            <label for="p-category">Category *</label>
+            <input type="text" id="p-category" class="input-field" placeholder="e.g. Autodesk Maya / 3D CGI" required>
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="p-client">Client / Brand</label>
+            <input type="text" id="p-client" class="input-field" placeholder="e.g. NeoWear Footwear" required>
+          </div>
+          <div class="form-group">
+            <label for="p-timeline">Timeline / Duration</label>
+            <input type="text" id="p-timeline" class="input-field" placeholder="e.g. 3 Weeks" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="p-tools">Software / Render Engines</label>
+          <input type="text" id="p-tools" class="input-field" placeholder="e.g. Blender 4.2, Octane Render, After Effects" required>
+        </div>
+
+        <div class="form-group">
+          <label for="p-deliverables">Deliverables Package</label>
+          <input type="text" id="p-deliverables" class="input-field" placeholder="e.g. 30s 4K Commercial Spot, 9:16 Cuts, 5 Hero Stills" required>
+        </div>
+
+        <div class="form-group">
+          <label for="p-image">Thumbnail Image URL / Asset Path *</label>
+          <div style="display: flex; gap: 0.5rem;">
+            <input type="text" id="p-image" class="input-field" placeholder="assets/images/car 3d model.jpg or /uploads/..." required style="flex: 1;">
+            <label class="btn btn-secondary" style="cursor: pointer; white-space: nowrap;">
+              <span>📁 Upload</span>
+              <input type="file" id="p-image-file" accept="image/*,video/*" style="display: none;">
+            </label>
+          </div>
+          <small style="color: var(--text-dim); font-size: 0.75rem;">Can be an existing assets path or an uploaded file.</small>
+        </div>
+
+        <div class="form-group">
+          <label for="p-challenge">Creative / Technical Challenge</label>
+          <textarea id="p-challenge" class="textarea-field" rows="2" placeholder="What core problem or complex visual did the project need to solve?"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="p-solution">Technical Solution & Pipeline</label>
+          <textarea id="p-solution" class="textarea-field" rows="2" placeholder="How did you solve it (mesh procedural shaders, caustics, audio reactive rigs)?"></textarea>
+        </div>
+
+        <div class="modal-footer" style="padding: 1.5rem 0 0 0;">
+          <button type="button" class="btn btn-secondary" id="btn-cancel-project">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btn-save-project-submit">Save Project</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 3: CHANGE PASSWORD
+       ========================================================================= -->
+  <div id="pwd-modal" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 style="font-family: var(--font-display);">Change Admin Password</h3>
+        <button class="modal-close" id="btn-close-pwd-modal">✕</button>
+      </div>
+      <form id="change-pwd-form" class="modal-body">
+        <div class="form-group">
+          <label for="curr-pwd">Current Password</label>
+          <input type="password" id="curr-pwd" class="input-field" required>
+        </div>
+        <div class="form-group">
+          <label for="new-pwd">New Password (min 6 characters)</label>
+          <input type="password" id="new-pwd" class="input-field" minlength="6" required>
+        </div>
+        <div class="form-group">
+          <label for="confirm-pwd">Confirm New Password</label>
+          <input type="password" id="confirm-pwd" class="input-field" minlength="6" required>
+        </div>
+        <div class="modal-footer" style="padding: 1.5rem 0 0 0;">
+          <button type="button" class="btn btn-secondary" id="btn-cancel-pwd">Cancel</button>
+          <button type="submit" class="btn btn-primary">Update Password</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="./admin.js"></script>
+  <script type="module" src="./js/firebase-analytics.js"></script>
+</body>
+</html>

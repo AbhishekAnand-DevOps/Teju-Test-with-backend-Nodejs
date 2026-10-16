@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO Meta Tags -->
+  <title>Tejashwini — 3D Generalist & Video Editor | Portfolio</title>
+  <meta name="description"
+    content="Portfolio of Tejashwini, a creative 3D Generalist & Video Editor specializing in high-impact CGI, octane rendering, motion graphics, and commercial video editing.">
+  <meta name="keywords"
+    content="Tejashwini, 3D Generalist, Video Editor, Blender, Cinema 4D, After Effects, Motion Graphics, CGI, Octane, Freelance 3D Artist">
+  <meta name="author" content="Tejashwini">
+
+  <!-- OpenGraph / Social Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Tejashwini — 3D Generalist & Video Editor">
+  <meta property="og:description"
+    content="Sculpting hyper-real dimensions and crafting rhythmic visual narratives for global brands and visionary creators.">
+  <meta property="og:image" content="assets/images/showreel-cover.jpg">
+
+  <!-- Google Fonts: Syne, Space Grotesk, Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles/main.css">
+
+  <!-- Favicon SVG Icon -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,5 95,25 95,75 50,95 5,75 5,25' fill='%238b5cf6'/><polygon points='50,15 85,32 85,68 50,85 15,68 15,32' fill='%2306070a'/><polygon points='50,30 70,42 70,58 50,70 30,58 30,42' fill='%23ff2a70'/></svg>">
+</head>
+
+<body>
+
+  <!-- Ambient Glowing Background Orbs & Grid -->
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="ambient-grid"></div>
+    <div class="glow-orb glow-orb-1"></div>
+    <div class="glow-orb glow-orb-2"></div>
+    <div class="glow-orb glow-orb-3"></div>
+  </div>
+
+  <!-- Mouse Spotlight Effect Layer -->
+  <div class="mouse-spotlight" aria-hidden="true"></div>
+
+  <!-- ========================================================================
+       STICKY FLOATING NAVIGATION BAR
+       ======================================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="nav-container">
+      <div class="nav-inner">
+
+        <!-- Brand Logo -->
+        <a href="#hero" class="brand-logo" id="brand-logo" aria-label="Tejashwini Home">
+          <div class="logo-cube">
+            <svg viewBox="0 0 24 24" fill="none" stroke="url(#logo-grad)" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <defs>
+                <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#8b5cf6" />
+                  <stop offset="100%" stop-color="#00f2fe" />
+                </linearGradient>
+              </defs>
+              <path
+                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+              </path>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+              <line x1="12" y1="22.08" x2="12" y2="12"></line>
+            </svg>
+          </div>
+          <div class="brand-title">
+            <span>TEJASHWINI</span>
+            <span class="brand-sub">3D & Design</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="nav-links" aria-label="Main Navigation">
+          <a href="#hero" class="nav-link active" id="nav-link-hero">Overview</a>
+          <a href="#about" class="nav-link" id="nav-link-about">About</a>
+          <a href="#portfolio" class="nav-link" id="nav-link-portfolio">Portfolio</a>
+          <a href="#contact" class="nav-link" id="nav-link-contact">Inquiry</a>
+        </nav>
+
+        <!-- Navigation Actions -->
+        <div class="nav-actions">
+          <!-- Audio Toggle Button -->
+          <button class="sound-toggle-btn" id="sound-toggle-btn" aria-label="Toggle UI Audio feedback"
+            title="Toggle UI Sound Effects">
+            <svg class="sound-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" />
+            </svg>
+          </button>
+
+          <!-- Hire Me CTA Button -->
+          <a href="#contact" class="nav-hire-btn" id="nav-hire-cta">
+            <span>Hire Me</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open mobile navigation menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer & Overlay -->
+  <div class="mobile-drawer-overlay" id="drawer-overlay"></div>
+  <aside class="mobile-nav-drawer" id="mobile-drawer">
+    <div>
+      <div
+        style="display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; margin-bottom: 2rem;">
+        <div class="brand-title"
+          style="font-size: clamp(1.1rem, 5vw, 1.35rem); font-weight: 800; font-family: var(--font-display); letter-spacing: -0.01em; white-space: nowrap;">
+          TEJASHWINI
+        </div>
+        <button class="modal-close-btn" id="close-drawer-btn" style="position: static; flex-shrink: 0;"
+          aria-label="Close menu">✕</button>
+      </div>
+      <nav style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <a href="#hero" class="mobile-nav-link nav-link">01. Overview</a>
+        <a href="#about" class="mobile-nav-link nav-link">02. About Me</a>
+        <a href="#portfolio" class="mobile-nav-link nav-link">03. Showcase & Showreel</a>
+        <a href="#contact" class="mobile-nav-link nav-link">04. Freelance Inquiry</a>
+      </nav>
+    </div>
+    <div>
+      <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center;">Start a Project</a>
+    </div>
+  </aside>
+
+  <main>
+    <!-- ======================================================================
+         SECTION 1: HERO SECTION (FULL SCREEN + THREE.JS 3D CANVAS)
+         ====================================================================== -->
+    <section class="hero-section" id="hero">
+
+      <!-- Interactive WebGL 3D Canvas -->
+      <div class="hero-3d-canvas-container" id="hero-3d-canvas" title="Drag to rotate 3D geometry"></div>
+
+      <div class="container">
+        <div class="hero-grid">
+
+          <!-- Left Column: Intro & Punchy Typography -->
+          <div class="hero-content">
+
+            <!-- Live Status Pill -->
+            <div class="hero-status-pill scroll-reveal reveal-slide-up">
+              <span class="status-ping"></span>
+              <span>AVAILABLE FOR FREELANCE PROJECTS</span>
+            </div>
+
+            <!-- Main Heading -->
+            <h1 class="hero-name scroll-reveal reveal-slide-up delay-100">
+              TEJASHWINI
+            </h1>
+
+            <div class="hero-title-badge scroll-reveal reveal-slide-up delay-200">
+              <span class="role-pill text-gradient">3D GENERALIST</span>
+              <span class="hero-separator">✦</span>
+              <span class="role-pill text-gradient-cyan">MOTION GRAPHICS</span>
+              <span class="hero-separator">✦</span>
+              <span class="role-pill text-gradient-cyan">VIDEO EDITOR</span>
+            </div>
+
+            <!-- Tagline -->
+            <p class="hero-tagline scroll-reveal reveal-slide-up delay-300">
+              Sculpting <strong>hyper-real 3D dimensions</strong> and crafting <strong>rhythmic visual
+                narratives</strong> that turn audience attention into brand devotion.
+            </p>
+
+            <!-- Action CTAs -->
+            <div class="hero-ctas scroll-reveal reveal-slide-up delay-400">
+              <a href="#portfolio" class="btn btn-primary" id="hero-cta-work">
+                <span>View My Work</span>
+                <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+              <a href="#contact" class="btn btn-secondary" id="hero-cta-hire">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <span>Hire Me</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 2: ABOUT ME SECTION (EDITORIAL PROFILE & CAPABILITIES)
+         ====================================================================== -->
+    <section class="about-section" id="about">
+      <div class="container">
+
+        <div class="section-header scroll-reveal reveal-slide-up">
+          <div class="section-tag">
+            <span class="dot"></span>
+            <span>Creative Identity</span>
+          </div>
+          <h2 class="section-title">
+            Where Technical Precision Meets <span class="text-gradient">Artistic Audacity</span>.
+          </h2>
+          <p class="section-desc">
+            A 3D Generalist and Motion Video Editor crafting high-end CGI experiences that bridge the gap between
+            imagination and brand growth.
+          </p>
+        </div>
+
+        <div class="about-grid">
+
+          <!-- Left Column: Portrait Visual Block -->
+          <div class="about-visual-column scroll-reveal reveal-slide-left">
+            <div class="about-portrait-frame">
+              <div class="portrait-inner">
+                <img src="assets/images/tejashwini-portrait V3.jpeg" alt="Tejashwini — 3D Generalist & Video Editor"
+                  width="900" height="1600" loading="lazy">
+              </div>
+
+              <!-- Floating Software Badges -->
+              <div class="software-floating-badge badge-blender scroll-reveal reveal-scale delay-200"
+                title="Blender 3D Suite">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#ea7600">
+                  <path
+                    d="M12.51 2.22a6.48 6.48 0 0 0-5.83 3.65l-4.4 7.62a6.48 6.48 0 0 0 1.94 8.71 6.51 6.51 0 0 0 8.89-1.92l4.4-7.62a6.5 6.5 0 0 0-4.99-10.44z" />
+                </svg>
+                <span>Autodesk Maya</span>
+              </div>
+
+              <div class="software-floating-badge badge-c4d scroll-reveal reveal-scale delay-300" title="Cinema 4D">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#00f2fe">
+                  <circle cx="12" cy="12" r="10" />
+                </svg>
+                <span>Marvelous Designer</span>
+              </div>
+
+              <div class="software-floating-badge badge-ae scroll-reveal reveal-scale delay-400"
+                title="Adobe After Effects">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#9999ff">
+                  <rect x="2" y="2" width="20" height="20" rx="4" />
+                </svg>
+                <span>After Effects</span>
+              </div>
+            </div>
+
+            <p
+              style="font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-tech); text-align: center; margin-top: 1rem;">
+              *Software badges represent current production environments.</p>
+          </div>
+
+          <!-- Right Column: Bio Narrative & Core Skills -->
+          <div class="about-bio-column scroll-reveal reveal-slide-right">
+
+            <p class="about-bio-text scroll-reveal reveal-slide-up">
+              Hey, I'm <strong>Tejashwini</strong> — I’m a 3D Generalist, Video Editor, and Motion Graphics Artist
+              passionate about bringing ideas to life through 3D design, animation, visual storytelling, and dynamic
+              video content.
+            </p>
+            <p class="about-bio-text scroll-reveal reveal-slide-up delay-100">
+              I work across 3D modeling, texturing, lighting, animation, motion graphics, video editing, and visual
+              effects, creating visuals that are both creative and purposeful.Alongside my professional work, I also
+              take on freelance projects, collaborating with brands, businesses, and individuals to create engaging
+              visual experiences that stand out.
+            </p>
+
+            <!-- Value Props Grid -->
+            <div class="value-props-grid stagger-reveal" data-stagger-step="0.15">
+              <div class="value-prop-card scroll-reveal reveal-slide-up">
+                <div class="value-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                    <polyline points="2 17 12 22 22 17"></polyline>
+                    <polyline points="2 12 12 17 22 12"></polyline>
+                  </svg>
+                </div>
+                <h4 class="value-title">End-to-End 3D Pipeline</h4>
+                <p class="value-desc">From initial polygon modeling and UV mapping to Octane spectral shading and fluid
+                  simulation.</p>
+              </div>
+
+              <div class="value-prop-card scroll-reveal reveal-slide-up">
+                <div class="value-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                  </svg>
+                </div>
+                <h4 class="value-title">Rhythmic Video Editing</h4>
+                <p class="value-desc">Frame-accurate cuts, sound design sync, cinematic speed ramps, and seamless
+                  invisible transitions.</p>
+              </div>
+            </div>
+
+            <!-- Software Stack Section -->
+            <div class="software-stack-section">
+              <h4 class="skills-heading">Core Software Arsenal & Pipeline</h4>
+              <div class="skills-chips-grid stagger-reveal" data-stagger-step="0.06">
+                <div class="skill-chip scroll-reveal reveal-scale">✦ Autodesk Maya</div>
+                <div class="skill-chip scroll-reveal reveal-scale">✦ Adobe Illustrator</div>
+                <div class="skill-chip scroll-reveal reveal-scale">✦ Adobe Photoshop</div>
+                <div class="skill-chip scroll-reveal reveal-scale">✦ Adobe Premiere Pro</div>
+                <div class="skill-chip scroll-reveal reveal-scale">✦ Adobe After Effects</div>
+                <div class="skill-chip scroll-reveal reveal-scale">✦ Arnold Renderer and V-Ray</div>
+                <div class="skill-chip scroll-reveal reveal-scale">✦ Substance 3D Painter</div>
+                <div class="skill-chip scroll-reveal reveal-scale">✦ Marvelous Designer</div>
+                <div class="skill-chip scroll-reveal reveal-scale">✦ ZBrush Sculpting</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ======================================================================
+         SECTION 3: PORTFOLIO & SHOWREEL SHOWCASE
+         ====================================================================== -->
+    <section class="portfolio-section" id="portfolio">
+      <div class="container">
+
+        <div class="section-header center scroll-reveal reveal-slide-up">
+          <div class="section-tag">
+            <span class="dot"></span>
+            <span>Selected Projects</span>
+          </div>
+          <h2 class="section-title">
+            Featured Work & <span class="text-gradient">Case Studies</span>
+          </h2>
+          <p class="section-desc">
+            Explore curated commercial spots, CGI product reveals, kinetic motion systems, and 3D concept artworks.
+          </p>
+        </div>
+
+        <!-- Master Showreel Hero Card -->
+        <div class="showreel-banner scroll-reveal reveal-scale" id="showreel-hero-card" role="button" tabindex="0"
+          aria-label="Open Master Showreel Player">
+          <img src="assets/images/showreel-cover.jpg" alt="Master Showreel Cover" class="showreel-img" loading="lazy">
+          <div class="showreel-overlay">
+            <div class="showreel-top-meta">
+              <span class="showreel-badge">✦ SHOWREEL 2025/2026</span>
+            </div>
+
+            <div class="showreel-center-play">
+              <svg class="play-svg" viewBox="0 0 24 24">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+
+            <div class="showreel-bottom-info">
+              <div>
+                <h3 class="showreel-title">Tejashwini — Master Motion & 3D Showreel</h3>
+                <p class="showreel-desc">A high-energy compilation of 3D renders, commercial edits, and VFX sequences.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="filter-tabs-wrapper scroll-reveal reveal-slide-up">
+          <button class="filter-btn active" data-filter="all">All Projects (6)</button>
+          <button class="filter-btn" data-filter="3d-cgi">Autodesk Maya</button>
+          <button class="filter-btn" data-filter="motion">Motion Graphics</button>
+          <button class="filter-btn" data-filter="commercial">Commercial Video</button>
+          <button class="filter-btn" data-filter="concept">Concept Art</button>
+        </div>
+
+        <!-- Portfolio Projects Grid -->
+        <div class="portfolio-grid stagger-reveal" id="portfolio-grid" data-stagger-step="0.12">
+
+          <!-- Project 1: Sneaker CGI -->
+          <article class="portfolio-card scroll-reveal reveal-slide-up" data-category="3d-cgi"
+            data-project-id="mustang-srt" tabindex="0" aria-label="View Mustang SRT 3D Render Details">
+            <div class="card-media">
+              <img src="assets/images/car 3d model.jpg" alt="Mustang SRT" loading="lazy">
+              <div class="card-hover-overlay">
+                <span class="view-case-study-btn">
+                  <span>Explore Case Study</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </span>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-meta-top">
+                <span class="card-category-tag">Autodesk Maya</span>
+                <span class="card-client-tag">Car</span>
+              </div>
+              <h3 class="card-title">Mustang SRT</h3>
+              <p class="card-excerpt">
+                Zero-gravity exploded product animation revealing internal holographic air cushioning and knit mesh
+                fibers.
+              </p>
+              <div class="card-tags-footer">
+                <span class="tag-pill">Autodesk Maya</span>
+                <span class="tag-pill">Arnold Render Engine</span>
+                <span class="tag-pill">Adobe Photoshop</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: Tanker 3D Model -->
+          <article class="portfolio-card scroll-reveal reveal-slide-up" data-category="3d-cgi"
+            data-project-id="tanker-3d-model" tabindex="0" aria-label="View Tanker 3D Model Details">
+            <div class="card-media">
+              <img src="assets/images/tanker 3d.jpg" alt="Tanker 3D Model" loading="lazy">
+              <div class="card-hover-overlay">
+                <span class="view-case-study-btn">
+                  <span>Explore Case Study</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </span>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-meta-top">
+                <span class="card-category-tag">Autodesk Maya</span>
+                <span class="card-client-tag">Tanker</span>
+              </div>
+              <h3 class="card-title">Tanker 3D Model</h3>
+              <p class="card-excerpt">
+                Audio-reactive 140BPM kinetic typography, laser displacement rigs, and stadium LED stage visuals.
+              </p>
+              <div class="card-tags-footer">
+                <span class="tag-pill">Autodesk Maya</span>
+                <span class="tag-pill">Arnold Render Engine</span>
+                <span class="tag-pill">Adobe Photoshop</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: Perfume Commercial -->
+          <article class="portfolio-card scroll-reveal reveal-slide-up" data-category="3d-cgi" data-project-id="boat-3d"
+            tabindex="0" aria-label="View Boat 3D Details">
+            <div class="card-media">
+              <img src="assets/images/boat 3d.jpg" alt="Boat 3D Render" loading="lazy">
+              <div class="card-hover-overlay">
+                <span class="view-case-study-btn">
+                  <span>Explore Case Study</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </span>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-meta-top">
+                <span class="card-category-tag">Autodesk Maya</span>
+                <span class="card-client-tag">Maison Noir</span>
+              </div>
+              <h3 class="card-title">Boat 3D</h3>
+              <p class="card-excerpt">
+                Fluid dynamic liquid simulations and spectral glass dispersion for an ultra-luxury perfume campaign.
+              </p>
+              <div class="card-tags-footer">
+                <span class="tag-pill">Blender</span>
+                <span class="tag-pill">Fluid Sims</span>
+                <span class="tag-pill">Premiere Pro</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4: Velocis Hypercar -->
+          <article class="portfolio-card scroll-reveal reveal-slide-up" data-category="3d-cgi"
+            data-project-id="hypercar-c4d" tabindex="0"
+            aria-label="View Velocis Aerodynamic EV Supercar Reveal Details">
+            <div class="card-media">
+              <img src="assets/images/project-hypercar.jpg" alt="Velocis Hypercar 3D CGI Commercial" loading="lazy">
+              <div class="card-hover-overlay">
+                <span class="view-case-study-btn">
+                  <span>Explore Case Study</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </span>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-meta-top">
+                <span class="card-category-tag">3D CGI & Product</span>
+                <span class="card-client-tag">Velocis Motors</span>
+              </div>
+              <h3 class="card-title">Velocis Aerodynamic EV Supercar</h3>
+              <p class="card-excerpt">
+                Aerodynamic neon light trail passes, anisotropic carbon weave textures, and commercial studio camera
+                sweeps.
+              </p>
+              <div class="card-tags-footer">
+                <span class="tag-pill">Unreal Engine 5</span>
+                <span class="tag-pill">Autodesk Maya</span>
+                <span class="tag-pill">Substance 3D</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 5: Kore-01 Cybernetic Persona -->
+          <article class="portfolio-card scroll-reveal reveal-slide-up" data-category="concept"
+            data-project-id="android-cgi" tabindex="0" aria-label="View Kore-01 Cybernetic Persona Showcase Details">
+            <div class="card-media">
+              <img src="assets/images/project-android.jpg" alt="Kore-01 3D Character Android" loading="lazy">
+              <div class="card-hover-overlay">
+                <span class="view-case-study-btn">
+                  <span>Explore Case Study</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </span>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-meta-top">
+                <span class="card-category-tag">Concept Art & CGI</span>
+                <span class="card-client-tag">Personal Vision</span>
+              </div>
+              <h3 class="card-title">Kore-01 Cybernetic Android</h3>
+              <p class="card-excerpt">
+                Digital character sculpting combining delicate human features with iridescent ceramic plating and
+                internal HUD fiber optics.
+              </p>
+              <div class="card-tags-footer">
+                <span class="tag-pill">ZBrush</span>
+                <span class="tag-pill">Blender</span>
+                <span class="tag-pill">Octane</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 6: Master Showreel Case -->
+          <article class="portfolio-card scroll-reveal reveal-slide-up" data-category="commercial"
+            data-project-id="showreel-master" tabindex="0" aria-label="View Tejashwini Master Motion Showreel Details">
+            <div class="card-media">
+              <img src="assets/images/showreel-cover.jpg" alt="Tejashwini Master Showreel Breakdown" loading="lazy">
+              <div class="card-hover-overlay">
+                <span class="view-case-study-btn">
+                  <span>Explore Case Study</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </span>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-meta-top">
+                <span class="card-category-tag">Commercial Video</span>
+                <span class="card-client-tag">Global Clients</span>
+              </div>
+              <h3 class="card-title">Master Motion & VFX Compilation</h3>
+              <p class="card-excerpt">
+                A 90-second mastercut synchronizing 50+ commercial cuts, original sound design, and custom 3D
+                simulations.
+              </p>
+              <div class="card-tags-footer">
+                <span class="tag-pill">Full Suite</span>
+                <span class="tag-pill">Sound Design</span>
+                <span class="tag-pill">4K Master</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SECTION 6: CONTACT & FREELANCE INQUIRY HUB
+         ====================================================================== -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+
+        <div class="section-header scroll-reveal reveal-slide-up">
+          <div class="section-tag">
+            <span class="dot"></span>
+            <span>Let's Build Something Bold</span>
+          </div>
+          <h2 class="section-title">
+            Initiate a <span class="text-gradient">Project Inquiry</span>
+          </h2>
+          <p class="section-desc">
+            Have a commercial spot, 3D product launch, or music video in mind? Let's discuss your timeline and bring
+            your vision to life.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+
+          <!-- Left Column: Direct Info & Social Hub -->
+          <div class="contact-info-card scroll-reveal reveal-slide-left">
+            <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.5rem;">Direct Reach</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">
+              Currently accepting freelance projects, contract roles, and select agency collaborations.
+            </p>
+
+            <div class="contact-direct-items">
+
+              <a href="mailto:tejashwini.vfx@gmail.com" class="direct-item" id="copy-email-btn"
+                title="Click to copy email address">
+                <div class="direct-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </div>
+                <div class="direct-details">
+                  <span>Direct Email (Click to Copy)</span>
+                  <strong>tejuraju50@gmail.com</strong>
+                </div>
+              </a>
+
+              <div class="direct-item">
+                <div class="direct-icon" style="background: rgba(139, 92, 246, 0.1); color: var(--accent-violet);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                </div>
+                <div class="direct-details">
+                  <span>Location & Timezone</span>
+                  <strong>Bangalore, India</strong>
+                </div>
+              </div>
+
+              <div class="direct-item">
+                <div class="direct-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--accent-emerald);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                </div>
+                <div class="direct-details">
+                  <span>Booking Status</span>
+                  <strong>🟢 Available</strong>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Social Links -->
+            <h4 class="skills-heading">Creative Networks</h4>
+            <div class="social-links-row">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn"
+                aria-label="Instagram">
+                <svg viewBox="0 0 24 24">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+              </a>
+              <a href="https://behance.net" target="_blank" rel="noopener noreferrer" class="social-icon-btn"
+                aria-label="Behance">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M9 13.5H4v3.25h5a1.62 1.62 0 0 0 0-3.25zM4 11.25h4.5a1.5 1.5 0 0 0 0-3H4v3zM2 6h7.5A3.75 3.75 0 0 1 13 9.75a3.5 3.5 0 0 1-1.6 3 3.88 3.88 0 0 1 2.35 3.5A3.75 3.75 0 0 1 10 20H2V6zm14 5h6v1.5h-6V11zm0-3h6v1.5h-6V8z" />
+                </svg>
+              </a>
+              <a href="https://www.linkedin.com/in/teju-raju-0b5707276?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+              </a>
+              <a href="https://www.artstation.com/tejuraju9" target="_blank" rel="noopener noreferrer"
+                class="social-icon-btn" aria-label="ArtStation">
+                <svg viewBox="0 0 24 24">
+                  <polygon points="12 2 22 19 2 19 12 2" />
+                  <polygon points="12 7 17 16 7 16 12 7" />
+                </svg>
+              </a>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn"
+                aria-label="YouTube">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
+                  <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
+                </svg>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Interactive Brief Form & Budget Estimator -->
+          <div class="inquiry-form-card scroll-reveal reveal-slide-right">
+            <form id="inquiry-form" novalidate>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label" for="client-name">Your Name *</label>
+                  <input type="text" id="client-name" class="form-input" placeholder="e.g. Alex Vance" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="client-email">Work Email *</label>
+                  <input type="email" id="client-email" class="form-input" placeholder="alex@studio.com" required>
+                </div>
+              </div>
+
+              <!-- Project Type Pill Selector -->
+              <div class="form-group">
+                <label class="form-label">Project Type *</label>
+                <div class="pill-selector-group">
+                  <label class="pill-option">
+                    <input type="radio" name="project_type" value="3D CGI Commercial" checked>
+                    <span class="pill-label">3D CGI Commercial</span>
+                  </label>
+                  <label class="pill-option">
+                    <input type="radio" name="project_type" value="Motion Graphics">
+                    <span class="pill-label">Motion Graphics</span>
+                  </label>
+                  <label class="pill-option">
+                    <input type="radio" name="project_type" value="Video Editing & Color">
+                    <span class="pill-label">Video Editing</span>
+                  </label>
+                  <label class="pill-option">
+                    <input type="radio" name="project_type" value="Music Video VFX">
+                    <span class="pill-label">Music Video VFX</span>
+                  </label>
+                  <label class="pill-option">
+                    <input type="radio" name="project_type" value="3D Product Render">
+                    <span class="pill-label">3D Product Stills</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Interactive Budget Estimator -->
+              <div class="form-group">
+                <label class="form-label" for="budget-range">Estimated Budget (INR)</label>
+                <div class="budget-slider-wrapper">
+                  <input type="range" id="budget-range" class="budget-range-input" min="1000" max="10000" step="500"
+                    value="3500">
+                  <div class="budget-val-display">
+                    <span>Scope: <strong id="budget-val" style="color: #fff;">₹3,500</strong></span>
+                    <span>Estimated Turnaround: <strong id="timeline-est-val" style="color: var(--accent-coral);">2-3
+                        Weeks</strong></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="project-brief">Project Brief & Deliverable Details *</label>
+                <textarea id="project-brief" class="form-textarea"
+                  placeholder="Tell me about your product, desired vibe, reference links, and deadline..."
+                  required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary submit-btn-full" id="submit-inquiry-btn">
+                <span>Send Project Inquiry</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       SITE FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <!-- Brand Info -->
+        <div>
+          <div class="brand-title footer-brand-title">
+            <span>TEJASHWINI</span>
+          </div>
+          <p class="footer-tagline">
+            3D Generalist & Motion Video Editor dedicated to sculpting high-fidelity visual worlds for forward-thinking
+            brands.
+          </p>
+        </div>
+
+        <!-- Sitemap -->
+        <div>
+          <h4 class="footer-heading">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#hero">Overview</a></li>
+            <li><a href="#about">About & Skills</a></li>
+            <li><a href="#portfolio">Featured Showcase</a></li>
+            <li><a href="#contact">Freelance Inquiry</a></li>
+          </ul>
+        </div>
+
+        <!-- Direct & Availability -->
+        <div>
+          <h4 class="footer-heading">Availability & Status</h4>
+          <ul class="footer-links">
+            <li><span style="color: #00ff37;">● Available</span></li>
+            <li><span>Remote Worldwide</span></li>
+            <li><a href="mailto:tejuraju50@gmail.com">tejuraju50@gmail.com</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <div>
+          © <span id="year-ticker">2026</span> Tejashwini. All rights reserved. • <span id="live-time-ticker">--:--:--
+            IST</span>
+        </div>
+        <button class="back-to-top-btn" id="back-to-top" aria-label="Back to Top">
+          <span>Back to Top</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       MODALS: CASE STUDY DETAIL & SHOWREEL PLAYER
+       ======================================================================== -->
+
+  <!-- Project Case Study Modal -->
+  <div class="modal-backdrop" id="case-study-modal" role="dialog" aria-modal="true"
+    aria-labelledby="modal-project-title">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" aria-label="Close Case Study">✕</button>
+      <div class="modal-media-banner">
+        <img id="modal-project-img" src="" alt="Project Visual Preview">
+      </div>
+      <div class="modal-body">
+        <span class="card-category-tag" id="modal-project-category">Category</span>
+        <h2 id="modal-project-title" style="font-size: 1.85rem; margin-top: 0.4rem;">Project Title</h2>
+
+        <div class="modal-meta-row">
+          <div class="modal-meta-item">
+            <span class="modal-meta-label">Client</span>
+            <span class="modal-meta-value" id="modal-project-client">Client Name</span>
+          </div>
+          <div class="modal-meta-item">
+            <span class="modal-meta-label">Timeline</span>
+            <span class="modal-meta-value" id="modal-project-timeline">3 Weeks</span>
+          </div>
+          <div class="modal-meta-item">
+            <span class="modal-meta-label">Tools Used</span>
+            <span class="modal-meta-value" id="modal-project-tools">Blender, Octane</span>
+          </div>
+          <div class="modal-meta-item">
+            <span class="modal-meta-label">Deliverables</span>
+            <span class="modal-meta-value" id="modal-project-deliverables">4K Commercial Spot</span>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <h4 class="skills-heading">The Creative Challenge</h4>
+          <p id="modal-project-challenge" style="color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem;">
+          </p>
+        </div>
+
+        <div>
+          <h4 class="skills-heading">Technical & Visual Solution</h4>
+          <p id="modal-project-solution" style="color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem;">
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Master Showreel Video Player Modal -->
+  <div class="modal-backdrop" id="showreel-modal" role="dialog" aria-modal="true"
+    aria-label="Tejashwini Master Showreel Player">
+    <div class="modal-dialog" style="max-width: 960px;">
+      <button class="modal-close-btn" aria-label="Close Showreel">✕</button>
+      <div class="modal-media-banner" style="position: relative; background: #000;">
+        <img src="assets/images/showreel-cover.jpg" alt="Showreel Player" style="filter: brightness(0.9);">
+        <canvas id="showreel-visualizer-canvas"
+          style="position: absolute; bottom: 0; left: 0; width: 100%; height: 80px; pointer-events: none; opacity: 0.8;"></canvas>
+
+        <!-- Video Player Controls Bar Simulation -->
+        <div class="modal-video-controls">
+          <div
+            style="display: flex; align-items: center; gap: 0.75rem; color: #fff; font-size: 0.85rem; font-family: var(--font-tech);">
+            <span style="color: var(--accent-coral);">▶ PLAYING</span>
+            <span>01:14 / 01:30</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span class="tag-pill" style="color: var(--accent-cyan);">4K 60FPS</span>
+            <span class="tag-pill" style="color: var(--accent-violet);">DOLBY ATMOS</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body" style="padding: 2rem;">
+        <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.5rem;">Tejashwini — 2025/2026 Master Motion
+          Showreel</h3>
+        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">
+          Featuring 3D commercial product sequences, audio-reactive music festival visuals, fluid simulations, and
+          high-energy brand edits. Rendered with Octane & Redshift, edited in Premiere Pro & DaVinci Resolve.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Three.js CDN Library for WebGL 3D Canvas -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Application Scripts -->
+  <script src="js/three-scene.js"></script>
+  <script src="js/cursor.js"></script>
+  <script src="js/app.js"></script>
+  <script type="module" src="js/firebase-analytics.js"></script>
+
+</body>
+
+</html>
