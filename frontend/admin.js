@@ -521,7 +521,13 @@ document.addEventListener('DOMContentLoaded', () => {
       modalInquiryStatusBadge.className = `badge badge-${inquiry.status}`;
       modalInquiryStatusBadge.textContent = formatStatus(inquiry.status);
 
-      btnEmailClient.href = `mailto:${inquiry.client_email}?subject=Re:%20${encodeURIComponent(inquiry.project_type)}%20Inquiry%20-%20Tejashwini`;
+      const emailSubject = `Re: ${inquiry.project_type || 'Project'} Inquiry - Tejashwini Studio`;
+      const emailBody = `Hi ${inquiry.client_name || 'there'},\n\nThank you for reaching out regarding your ${inquiry.project_type || 'creative'} project.\n\nI have reviewed your project brief:\n"${inquiry.project_brief || ''}"\n\nEstimated Timeline: ${inquiry.timeline || 'Flexible'}\nBudget: ${inquiry.budget > 0 ? '₹' + inquiry.budget.toLocaleString() : 'Flexible'}\n\nI'd love to discuss how we can bring this vision to life. Let me know when you're available for a quick chat or call.\n\nWarm regards,\nTejashwini\nCreative Director & Designer\nadmin@tejashwini.art`;
+
+      // Compose Gmail URL directly (opens in new tab)
+      btnEmailClient.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(inquiry.client_email)}&su=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+      btnEmailClient.target = '_blank';
+      btnEmailClient.rel = 'noopener noreferrer';
 
       inquiryDetailModal.classList.add('open');
       document.body.style.overflow = 'hidden';
