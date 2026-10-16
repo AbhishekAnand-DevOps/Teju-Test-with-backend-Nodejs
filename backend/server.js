@@ -115,11 +115,11 @@ const server = app.listen(config.port, () => {
 ===========================================================
   🚀 TEJASHWINI PORTFOLIO BACKEND IS ONLINE
 ===========================================================
-  * Server running at:     http://localhost:${config.port}
-  * Public Portfolio:      http://localhost:${config.port}/
-  * Admin Portal:          http://localhost:${config.port}/admin
-  * Health Endpoint:       http://localhost:${config.port}/api/health
-  * Inquiries API:         http://localhost:${config.port}/api/inquiries
+  * Server running at:     https://teju-test-with-backend-nodejs.onrender.com:${config.port}
+  * Public Portfolio:      https://teju-test-with-backend-nodejs.onrender.com:${config.port}/
+  * Admin Portal:          https://teju-test-with-backend-nodejs.onrender.com:${config.port}/admin
+  * Health Endpoint:       https://teju-test-with-backend-nodejs.onrender.com:${config.port}/api/health
+  * Inquiries API:         https://teju-test-with-backend-nodejs.onrender.com:${config.port}/api/inquiries
   * Database Status:       SQLite Connected (WAL Mode)
   * Environment:           ${config.nodeEnv}
 ===========================================================
