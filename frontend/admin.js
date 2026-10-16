@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --------------------------------------------------------------------------
   const API_BASE = (window.location.protocol === 'http:' || window.location.protocol === 'https:') && window.location.port === '5000'
     ? ''
-    : 'http://localhost:5000';
+    : 'https://teju-test-with-backend-nodejs.onrender.com';
 
   function resolveMediaUrl(url) {
     if (!url) return '';
