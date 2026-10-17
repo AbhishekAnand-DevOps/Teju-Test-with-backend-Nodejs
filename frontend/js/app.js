@@ -576,18 +576,77 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!portraitContainers.length) return;
 
     portraitContainers.forEach((container) => {
-      // 1. Silently disable right click without displaying any toast notification
+      // 1. Silently disable right click and context menu
       container.addEventListener('contextmenu', (e) => {
         e.preventDefault();
         e.stopPropagation();
         return false;
-      });
+      }, { passive: false });
 
       // 2. Prevent dragging image to desktop or browser tabs
       container.addEventListener('dragstart', (e) => {
         e.preventDefault();
         return false;
       });
+
+      // 3. Mobile touch protection: Block long-press, save dialog, and multi-touch gestures
+      ['touchstart', 'touchmove', 'touchend', 'pointerdown'].forEach((evt) => {
+        container.addEventListener(evt, (e) => {
+          if (e.touches && e.touches.length > 1) {
+            // Multi-touch gestures (e.g. 3-finger swipe screenshot) -> briefly blackout
+            blackoutImage();
+            setTimeout(restoreImage, 1200);
+          }
+        }, { passive: true });
+      });
+
+      // 4. Convert <img> to secure HTML5 <canvas> with watermark to obscure direct image extraction
+      const img = container.querySelector('img.protected-portrait-img');
+      if (img) {
+        const renderToCanvas = () => {
+          if (container.querySelector('canvas.protected-portrait-canvas')) return;
+
+          const canvas = document.createElement('canvas');
+          canvas.className = 'protected-portrait-canvas';
+          canvas.width = img.naturalWidth || img.width || 900;
+          canvas.height = img.naturalHeight || img.height || 1600;
+          canvas.setAttribute('aria-label', img.alt || 'Protected Visual');
+          canvas.setAttribute('role', 'img');
+
+          const ctx = canvas.getContext('2d');
+          if (ctx) {
+            // Draw image on canvas
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+            // Subtle micro-watermark baked directly into pixels
+            ctx.save();
+            ctx.font = '600 24px monospace';
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.12)';
+            ctx.textAlign = 'right';
+            ctx.fillText('TEJASHWINI PORTFOLIO © PROTECTED', canvas.width - 24, canvas.height - 28);
+            ctx.restore();
+
+            // Replace img with canvas
+            img.style.display = 'none';
+            container.insertBefore(canvas, container.firstChild);
+          }
+        };
+
+        if (img.complete && img.naturalWidth > 0) {
+          renderToCanvas();
+        } else {
+          img.addEventListener('load', renderToCanvas, { once: true });
+        }
+      }
+
+      // Add watermark overlay element if not present
+      if (!container.querySelector('.portrait-watermark-overlay')) {
+        const overlay = document.createElement('div');
+        overlay.className = 'portrait-watermark-overlay';
+        overlay.setAttribute('aria-hidden', 'true');
+        overlay.innerHTML = '<span class="portrait-watermark-text">Tejashwini • Protected Artwork</span>';
+        container.appendChild(overlay);
+      }
     });
 
     // 3. Instant blackout on Screenshot detection

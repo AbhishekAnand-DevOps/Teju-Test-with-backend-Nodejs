@@ -991,11 +991,47 @@ body.cursor-hover .custom-cursor-dot {
   cursor: default;
   user-select: none;
   -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  pointer-events: auto;
+  touch-action: none;
+}
+
+/* Subtle protection watermark overlay on mobile/desktop */
+.portrait-watermark-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 16px 16px;
+  mix-blend-mode: overlay;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.portrait-watermark-text {
+  font-family: var(--font-tech);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  background: rgba(11, 14, 20, 0.6);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 /* Hard blackout when screenshot / focus loss is triggered */
 .portrait-inner.screen-captured img,
-.portrait-inner.screen-captured canvas {
+.portrait-inner.screen-captured canvas,
+.portrait-inner.screen-captured .portrait-watermark-overlay {
   visibility: hidden !important;
   opacity: 0 !important;
 }
