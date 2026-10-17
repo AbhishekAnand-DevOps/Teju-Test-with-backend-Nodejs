@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('modal-project-deliverables').textContent = data.deliverables;
     document.getElementById('modal-project-challenge').textContent = data.challenge;
     document.getElementById('modal-project-solution').textContent = data.solution;
-    
+
     const imgEl = document.getElementById('modal-project-img');
     if (imgEl) {
       imgEl.src = data.image;
@@ -565,4 +565,86 @@ document.addEventListener('DOMContentLoaded', () => {
   revealElements.forEach((el) => {
     revealObserver.observe(el);
   });
+
+  // --------------------------------------------------------------------------
+  // 12. PORTRAIT ANTI-SCREENSHOT & SILENT ANTI-DOWNLOAD ENGINE
+  // --------------------------------------------------------------------------
+  initPortraitProtection();
+
+  function initPortraitProtection() {
+    const portraitContainers = document.querySelectorAll('.protected-image-container');
+    if (!portraitContainers.length) return;
+
+    portraitContainers.forEach((container) => {
+      // 1. Silently disable right click without displaying any toast notification
+      container.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      });
+
+      // 2. Prevent dragging image to desktop or browser tabs
+      container.addEventListener('dragstart', (e) => {
+        e.preventDefault();
+        return false;
+      });
+    });
+
+    // 3. Instant blackout on Screenshot detection
+    function blackoutImage() {
+      portraitContainers.forEach((c) => c.classList.add('screen-captured'));
+    }
+
+    function restoreImage() {
+      portraitContainers.forEach((c) => c.classList.remove('screen-captured'));
+    }
+
+    // Windows Snipping Tool (Win+Shift+S) or Mac screenshot immediately unfocuses the browser window
+    window.addEventListener('blur', () => {
+      blackoutImage();
+    });
+
+    // Restore when user returns and clicks inside the browser
+    window.addEventListener('focus', () => {
+      setTimeout(restoreImage, 150);
+    });
+
+    // Detect tab switch or screen lock
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        blackoutImage();
+      } else {
+        setTimeout(restoreImage, 150);
+      }
+    });
+
+    // Keyboard capture triggers (PrtScn, Windows key combinations, Alt+PrtScn)
+    window.addEventListener('keydown', (e) => {
+      const code = e.code || '';
+      const key = e.key || '';
+
+      // Any PrintScreen button
+      if (key === 'PrintScreen' || code === 'PrintScreen') {
+        blackoutImage();
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText('').catch(() => { });
+        }
+        setTimeout(restoreImage, 2000);
+      }
+
+      // Windows + Shift + S or Cmd + Shift + 3/4/5
+      if ((e.metaKey || e.ctrlKey || e.altKey) && e.shiftKey) {
+        blackoutImage();
+        setTimeout(restoreImage, 2000);
+      }
+    }, true);
+
+    window.addEventListener('keyup', (e) => {
+      if (e.key === 'PrintScreen' || e.code === 'PrintScreen') {
+        blackoutImage();
+        setTimeout(restoreImage, 2000);
+      }
+    }, true);
+  }
 });
+
